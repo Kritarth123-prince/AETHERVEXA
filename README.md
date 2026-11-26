@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="assets/AETHERVEXA_Master_Logo1.png" alt="AETHERVEXA" width="760">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/AIMarkLens_Header_Logo.svg">
+    <img src="assets/AIMarkLens_Header_Logo_Light.svg" alt="AIMarkLens" width="520">
+  </picture>
 </p>
 
 <p align="center">
@@ -13,7 +16,7 @@
   <img alt="Python 3.12" src="https://img.shields.io/badge/python-3.12-3776AB">
   <img alt="Qt 6 via PySide6" src="https://img.shields.io/badge/UI-Qt%206%20%2F%20PySide6-41CD52">
   <img alt="Editions: Public and Personal" src="https://img.shields.io/badge/editions-Public%20%7C%20Personal-8B5CF6">
-  <img alt="Version 1.0.0" src="https://img.shields.io/badge/version-1.0.0-22D3EE">
+  <img alt="Version 1.1.0" src="https://img.shields.io/badge/version-1.1.0-2563EB">
 </p>
 
 <p align="center">
@@ -28,7 +31,7 @@
 ---
 
 > **Analyse without altering. Preserve the original.**
-> AETHERVEXA opens every file read-only, records its SHA-256 hash before and after each analysis, and writes
+> AIMarkLens opens every file read-only, records its SHA-256 hash before and after each analysis, and writes
 > anything it produces (reports, copies) to separate files. It reports what it can detect, and is explicit about
 > what it cannot.
 
@@ -38,12 +41,12 @@
 
 ## Contents
 
-- [Why AETHERVEXA](#why-aethervexa)
+- [Why AIMarkLens](#why-AIMarkLens)
 - [Features](#features)
 - [Editions](#editions)
 - [Download and install](#download-and-install)
 - [Quick start](#quick-start)
-- [Using AETHERVEXA](#using-aethervexa)
+- [Using AIMarkLens](#using-AIMarkLens)
 - [Online verification](#online-verification)
 - [What it can and cannot detect](#what-it-can-and-cannot-detect)
 - [Configuration](#configuration)
@@ -57,14 +60,14 @@
 - [Licence](#licence)
 - [Acknowledgements](#acknowledgements)
 
-## Why AETHERVEXA
+## Why AIMarkLens
 
 AI-generated images and text carry provenance signals in very different places: signed Content Credentials (C2PA),
 IPTC and XMP metadata, generator parameters in PNG chunks, data hidden in pixel bits or invisible Unicode characters,
 and invisible watermarks such as Google SynthID that live in the pixels themselves. Each needs a different check, and
 most tools look at only one.
 
-AETHERVEXA brings these checks together in one desktop application, shows exactly where each signal was found, and
+AIMarkLens brings these checks together in one desktop application, shows exactly where each signal was found, and
 states plainly when something cannot be determined, so that "no signals found" is never mistaken for "not AI".
 
 ## Features
@@ -125,7 +128,7 @@ states plainly when something cannot be determined, so that "no signals found" i
 | Reports, local history, tool installer | ✓ | ✓ |
 | Cleaned text copies (invisible and deceptive characters) | ✓ | ✓ |
 | **Experiments lab**: robustness experiments, lab watermark, synthetic text watermark | – | ✓ |
-| **Metadata-free image copies** | – | ✓ |
+| Metadata-free image copies (image export) | ✓ | ✓ |
 | **Statistical text watermark test** (green-list) | – | ✓ |
 | Text cleaning of citation markup and tracking links | – | ✓ |
 | Advanced settings (pixel-analysis area, text lab key) | – | ✓ |
@@ -140,10 +143,10 @@ Download from the [**Releases**](../../releases) page. Each release provides, fo
 
 | File | Description |
 |---|---|
-| `AETHERVEXA-1.0.0-Public-Setup.exe` | Standard installer with uninstaller (recommended) |
-| `AETHERVEXA-1.0.0-Public-Portable.exe` | Single file, no installation, runs from any folder |
-| `AETHERVEXA-1.0.0-Personal-Setup.exe` | Personal Edition installer |
-| `AETHERVEXA-1.0.0-Personal-Portable.exe` | Personal Edition portable file |
+| `AIMarkLens-1.1.0-Public-Setup.exe` | Standard installer with uninstaller (recommended) |
+| `AIMarkLens-1.1.0-Public-Portable.exe` | Single file, no installation, runs from any folder |
+| `AIMarkLens-1.1.0-Personal-Setup.exe` | Personal Edition installer |
+| `AIMarkLens-1.1.0-Personal-Portable.exe` | Personal Edition portable file |
 | `SHA256SUMS.txt` | Checksums of every file |
 
 **Requirements:** Windows 10 or 11, 64-bit. About 400 MB of disk space when installed.
@@ -152,11 +155,11 @@ Download from the [**Releases**](../../releases) page. Each release provides, fo
 
 1. Run the `Setup.exe` for your edition. It installs for your user account only, with no administrator rights
    needed; choose "Install for all users" on the first page if you prefer.
-2. Choose whether to add a desktop shortcut, then finish. AETHERVEXA appears in the Start menu.
+2. Choose whether to add a desktop shortcut, then finish. AIMarkLens appears in the Start menu.
 
 **Uninstall** from *Settings → Apps → Installed apps* (or *Control Panel → Programs*). The last page asks whether to
 also delete your settings, API keys, analysis history and downloaded tools. Silent uninstall for scripts:
-`"%LOCALAPPDATA%\Programs\AETHERVEXA\unins000.exe" /VERYSILENT` (add `/REMOVEDATA=1` to remove your data too).
+`"%LOCALAPPDATA%\Programs\AIMarkLens\unins000.exe" /VERYSILENT` (add `/REMOVEDATA=1` to remove your data too).
 
 ### Portable
 
@@ -166,7 +169,7 @@ starts more slowly than the installed version and shows a splash screen meanwhil
 ### Verifying downloads
 
 ```powershell
-Get-FileHash .\AETHERVEXA-1.0.0-Public-Setup.exe -Algorithm SHA256
+Get-FileHash .\AIMarkLens-1.1.0-Public-Setup.exe -Algorithm SHA256
 ```
 
 Compare the result with `SHA256SUMS.txt`. Unsigned builds may trigger Microsoft Defender SmartScreen; choose
@@ -183,7 +186,7 @@ Compare the result with `SHA256SUMS.txt`. Unsigned builds may trigger Microsoft 
 
 For text, open **Text Lab** and press **Ctrl+Shift+V** to paste exactly what you copied.
 
-## Using AETHERVEXA
+## Using AIMarkLens
 
 ### Image Lab
 
@@ -220,7 +223,7 @@ Controlled studies on synthetic or authorised samples:
 
 - **Image robustness:** applies 14 transformations (JPEG and WebP re-encoding, resizing, cropping, rotation, blur,
   noise and more) and records which signals survive: EXIF, XMP, C2PA, text chunks, hidden LSB data and the
-  AETHERVEXA lab watermark.
+  AIMarkLens lab watermark.
 - **Text watermark:** generates synthetic text with a transparent green-list watermark, attacks it (deletion,
   paraphrase, word swaps, zero-width and homoglyph insertion) and measures detection before and after cleaning.
 
@@ -249,7 +252,7 @@ data) or Markdown. Exports never overwrite the analysed file.
 
 ## Online verification
 
-AETHERVEXA can upload an image to independent services, **only when you ask**, and after showing which services
+AIMarkLens can upload an image to independent services, **only when you ask**, and after showing which services
 will receive it. Two kinds of service are supported, and reports keep them apart:
 
 | Service | What it checks | What you need |
@@ -271,7 +274,7 @@ SynthID. Set up services in **Settings → Online verification** and press **Tes
    ```powershell
    gcloud auth application-default login
    ```
-3. In AETHERVEXA, choose **Application Default Credentials**, enter the **Project ID** and a **Region**
+3. In AIMarkLens, choose **Application Default Credentials**, enter the **Project ID** and a **Region**
    (for example `us-central1`).
 
 Alternatively choose a **service-account key file** (JSON), or **Google Cloud CLI token** (`gcloud auth login`).
@@ -290,11 +293,11 @@ Google's verifier does not accept API keys.
 ### Checking a copy against the original
 
 Compare loads the original as A and the copy as B, checks both online and reports per service whether AI generation
-is *still detected*, *no longer detected* or *newly detected*. In the Personal Edition, saving a metadata-free copy
-offers **Compare online** directly.
+is *still detected*, *no longer detected* or *newly detected*. Saving a metadata-free copy offers **Compare online**
+directly.
 
 A metadata-free copy keeps the image data bit for bit, so SynthID and classifier results are expected to stay the
-same. Only metadata signals (C2PA, IPTC, EXIF) disappear, and AETHERVEXA's local history still recognises the copy.
+same. Only metadata signals (C2PA, IPTC, EXIF) disappear, and AIMarkLens's local history still recognises the copy.
 
 ## What it can and cannot detect
 
@@ -331,19 +334,19 @@ All settings are in **Settings** and are saved automatically.
 | [ExifTool](https://exiftool.org/) | Thousands of extra metadata tags, including maker notes |
 | [c2patool](https://github.com/contentauth/c2pa-rs) | Cryptographic validation of Content Credentials and C2PA trust-list checks |
 
-Press **Install** in Settings: AETHERVEXA downloads the official release, verifies its published SHA-256 checksum and
+Press **Install** in Settings: AIMarkLens downloads the official release, verifies its published SHA-256 checksum and
 installs it for your user only. It also finds tools in a `tools` folder next to the app, in
-`%LOCALAPPDATA%\AETHERVEXA\tools`, or on your `PATH` (for example `winget install OliverBetz.ExifTool`).
+`%LOCALAPPDATA%\AIMarkLens\tools`, or on your `PATH` (for example `winget install OliverBetz.ExifTool`).
 
-### Where AETHERVEXA stores data
+### Where AIMarkLens stores data
 
 | Data | Location |
 |---|---|
-| Settings and encrypted API keys | `%APPDATA%\AETHERVEXA\AETHERVEXA.ini` |
-| Local analysis history (hashes, names, findings) | `%LOCALAPPDATA%\AETHERVEXA\history.json` |
-| Downloaded tools | `%LOCALAPPDATA%\AETHERVEXA\tools\` |
-| Reports and copies (default) | `Documents\AETHERVEXA Output\` |
-| Installed program (per user) | `%LOCALAPPDATA%\Programs\AETHERVEXA\` |
+| Settings and encrypted API keys | `%APPDATA%\AIMarkLens\AIMarkLens.ini` |
+| Local analysis history (hashes, names, findings) | `%LOCALAPPDATA%\AIMarkLens\history.json` |
+| Downloaded tools | `%LOCALAPPDATA%\AIMarkLens\tools\` |
+| Reports and copies (default) | `Documents\AIMarkLens Output\` |
+| Installed program (per user) | `%LOCALAPPDATA%\Programs\AIMarkLens\` |
 
 ## Privacy and security
 
@@ -373,13 +376,13 @@ cd AETHERVEXA
 py -3.12 -m venv .venv
 .venv\Scripts\python.exe -m pip install --upgrade pip
 .venv\Scripts\python.exe -m pip install -r requirements-dev.txt
-.venv\Scripts\python.exe -m aethervexa
+.venv\Scripts\python.exe -m AIMarkLens
 ```
 
-From source, AETHERVEXA runs as the Personal Edition. To try the Public Edition:
+From source, AIMarkLens runs as the Personal Edition. To try the Public Edition:
 
 ```powershell
-$env:AETHERVEXA_EDITION = "public"; .venv\Scripts\python.exe -m aethervexa
+$env:AIMarkLens_EDITION = "public"; .venv\Scripts\python.exe -m AIMarkLens
 ```
 
 ### Test
@@ -402,13 +405,13 @@ application folder, the portable file and the installer, runs each build's self-
 
 ```
 .dist\
-  Public\    AETHERVEXA-1.0.0-Public-Setup.exe     AETHERVEXA-1.0.0-Public-Portable.exe     AETHERVEXA\
-  Personal\  AETHERVEXA-1.0.0-Personal-Setup.exe   AETHERVEXA-1.0.0-Personal-Portable.exe   AETHERVEXA\
+  Public\    AIMarkLens-1.1.0-Public-Setup.exe     AIMarkLens-1.1.0-Public-Portable.exe     AIMarkLens\
+  Personal\  AIMarkLens-1.1.0-Personal-Setup.exe   AIMarkLens-1.1.0-Personal-Portable.exe   AIMarkLens\
   SHA256SUMS.txt
 ```
 
 Options: `-Edition Public` or `-Edition Personal` (one edition only), `-SkipTests`, `-NoPortable`, `-NoInstaller`.
-Any build can check itself with `AETHERVEXA.exe --self-test` (exit code 0 means healthy).
+Any build can check itself with `AIMarkLens.exe --self-test` (exit code 0 means healthy).
 
 ### Brand assets
 
@@ -420,7 +423,7 @@ regenerates the screenshots in `docs\screenshots\`.
 ## Project structure
 
 ```
-aethervexa/
+AIMarkLens/
   core/          integrity, task context, reports, external tools, installer, network, history, key encryption
   formats/       JPEG/PNG/WebP parsers, EXIF/XMP/IPTC/ICC, CBOR, DER, C2PA (JUMBF)
   engines/
@@ -445,7 +448,7 @@ Heavy work runs on a thread pool, one task per page at a time, which also preven
 <details>
 <summary><strong>"Failed to load Python DLL … _internal\python312.dll"</strong></summary>
 
-The `AETHERVEXA.exe` inside an application folder needs the `_internal` folder next to it and cannot be copied on
+The `AIMarkLens.exe` inside an application folder needs the `_internal` folder next to it and cannot be copied on
 its own. Use the installer, or the `Portable.exe`, which is a single file.
 </details>
 
@@ -491,7 +494,7 @@ Removing metadata leaves the pixels identical, so detectors give the same result
 **Does "Origin not determined" mean an image is real?** No. It means no embedded provenance was found. Metadata is
 easily removed, and pixel watermarks can only be checked with the provider's verifier.
 
-**Can AETHERVEXA detect SynthID offline?** No. Only Google can verify SynthID; AETHERVEXA calls Google's verifier when
+**Can AIMarkLens detect SynthID offline?** No. Only Google can verify SynthID; AIMarkLens calls Google's verifier when
 you set it up and ask.
 
 **Can it detect ChatGPT-written text?** It finds artefacts that copied ChatGPT answers often carry (citation markup,
@@ -501,9 +504,9 @@ you set it up and ask.
 
 ## Responsible use
 
-AETHERVEXA is a verification and research tool. Use it on content you own or are authorised to examine. Provenance
+AIMarkLens is a verification and research tool. Use it on content you own or are authorised to examine. Provenance
 information exists to help people understand where content comes from; removing it from content you share may breach
-platform rules or laws that require AI-generated content to be disclosed. AETHERVEXA does not, and will not, provide
+platform rules or laws that require AI-generated content to be disclosed. AIMarkLens does not, and will not, provide
 ways to remove or defeat invisible watermarks or AI detection.
 
 ## Contributing

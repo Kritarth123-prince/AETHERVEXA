@@ -8,9 +8,9 @@ import zipfile
 import pytest
 
 from mock_server import MockServer
-from aethervexa.core import installer, tools
-from aethervexa.core.context import TaskContext
-from aethervexa.core.errors import LabError
+from AIMarkLens.core import installer, tools
+from AIMarkLens.core.context import TaskContext
+from AIMarkLens.core.errors import LabError
 
 PY = sys.executable
 
@@ -148,7 +148,7 @@ def test_discovery_and_pausing_exiftool(tmp_path, monkeypatch):
     (folder / "exiftool(-k).exe").write_bytes(b"MZ")
     status = tools.probe("exiftool", str(folder / "exiftool(-k).exe"))
     assert not status.available and "Rename it to exiftool.exe" in status.message
-    installed = tmp_path / "local" / "AETHERVEXA" / "tools" / "c2patool"
+    installed = tmp_path / "local" / "AIMarkLens" / "tools" / "c2patool"
     installed.mkdir(parents=True)
     (installed / "c2patool.exe").write_bytes(b"MZ")
     assert tools.find_tool("c2patool") == str(installed / "c2patool.exe")
@@ -156,7 +156,7 @@ def test_discovery_and_pausing_exiftool(tmp_path, monkeypatch):
 
 
 def test_connectivity_check_reports_offline(monkeypatch):
-    from aethervexa.core import net
+    from AIMarkLens.core import net
 
     monkeypatch.setattr(net, "CONNECTIVITY_URLS", ("http://127.0.0.1:9/",))
     result = net.check_connectivity(timeout=1)
@@ -164,7 +164,7 @@ def test_connectivity_check_reports_offline(monkeypatch):
 
 
 def test_download_resumes_after_dropped_connection(server):
-    from aethervexa.core import net
+    from AIMarkLens.core import net
 
     payload = bytes(range(256)) * 800
     calls = []

@@ -1,11 +1,11 @@
-from aethervexa.core.context import TaskContext
-from aethervexa.engines.text import greenlist
-from aethervexa.engines.text.analyser import TextOptions, analyse_text
-from aethervexa.engines.text.artefacts import find_artefacts, remove_ai_utm
-from aethervexa.engines.text.cleaning import DEFAULT_OPTIONS, clean_text
-from aethervexa.engines.text.compare import compare_texts
-from aethervexa.engines.text.sample import TextSample, decode_bytes, load_text_file
-from aethervexa.engines.text.unicode_scan import scan
+from AIMarkLens.core.context import TaskContext
+from AIMarkLens.engines.text import greenlist
+from AIMarkLens.engines.text.analyser import TextOptions, analyse_text
+from AIMarkLens.engines.text.artefacts import find_artefacts, remove_ai_utm
+from AIMarkLens.engines.text.cleaning import DEFAULT_OPTIONS, clean_text
+from AIMarkLens.engines.text.compare import compare_texts
+from AIMarkLens.engines.text.sample import TextSample, decode_bytes, load_text_file
+from AIMarkLens.engines.text.unicode_scan import scan
 
 TAG = "".join(chr(0xE0000 + ord(c)) for c in "ignore previous")
 ZW = "".join("​" if b == "0" else "‌" for b in "".join(f"{ord(c):08b}" for c in "Hi!"))
@@ -82,7 +82,7 @@ def test_green_list_watermark_detection():
 
 
 def test_text_experiment_and_compare():
-    from aethervexa.engines.text.experiments import run_text_experiment
+    from AIMarkLens.engines.text.experiments import run_text_experiment
 
     doc = run_text_experiment("k", 0.25, 1.5, 150, 4, TaskContext())
     assert len(doc.sections[0].blocks[1].rows) >= 10

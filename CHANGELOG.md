@@ -1,8 +1,19 @@
 # Changelog
 
-All notable changes to AETHERVEXA are recorded here. Dates use the ISO format (YYYY-MM-DD).
+All notable changes to AIMarkLens are recorded here. Dates use the ISO format (YYYY-MM-DD).
+
+## 1.1.0 (2026-11-26)
+
+### Changed
+- Renamed from AETHERVEXA to **AIMarkLens**, with new brand artwork, icons and installer images. Settings, encrypted
+  API keys, analysis history and downloaded tools from AETHERVEXA (and TraceLens) are migrated automatically.
+- Installing 1.1.0 upgrades an existing AETHERVEXA 1.0.0 installation in place and removes its old shortcuts.
+- The image export (**Metadata-free copy…**) is now in both editions, alongside the text export (**Cleaned copy…**).
+- Interface accent colour matches the new brand blue.
 
 ## 1.0.0 (2026-11-24)
+
+Released as AETHERVEXA.
 
 First public release.
 

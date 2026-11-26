@@ -5,11 +5,11 @@ import os
 import pytest
 
 from mock_server import MockServer
-from aethervexa.core.context import CancelToken, Cancelled, TaskContext
-from aethervexa.engines.image.analyser import ImageOptions, analyse_image
-from aethervexa.engines.online import verifiers
-from aethervexa.engines.online.report import TAB, attach_compare, merge_into
-from aethervexa.engines.online.verifiers import OnlineConfig, verify_bytes, verify_image_online
+from AIMarkLens.core.context import CancelToken, Cancelled, TaskContext
+from AIMarkLens.engines.image.analyser import ImageOptions, analyse_image
+from AIMarkLens.engines.online import verifiers
+from AIMarkLens.engines.online.report import TAB, attach_compare, merge_into
+from AIMarkLens.engines.online.verifiers import OnlineConfig, verify_bytes, verify_image_online
 
 
 @pytest.fixture
@@ -127,8 +127,8 @@ def test_merge_updates_verdict_and_tab(server, png_with_parameters, tmp_path, rg
 
 
 def test_compare_online_table(server, jpeg_with_metadata, tmp_path):
-    from aethervexa.engines.image.compare import compare_images
-    from aethervexa.engines.image.export import DEFAULT_REMOVE, export_without_metadata
+    from AIMarkLens.engines.image.compare import compare_images
+    from AIMarkLens.engines.image.export import DEFAULT_REMOVE, export_without_metadata
 
     install_detecting_services(server, ai=True)
     copy = tmp_path / "copy.jpg"
@@ -157,7 +157,7 @@ def test_google_project_mode_uses_bearer_token(server, jpeg_with_metadata, monke
 
 
 def test_secrets_round_trip():
-    from aethervexa.core.secrets import protect, unprotect
+    from AIMarkLens.core.secrets import protect, unprotect
 
     stored = protect("sk-secret-value")
     assert stored != "sk-secret-value" and unprotect(stored) == "sk-secret-value"
@@ -168,7 +168,7 @@ def test_settings_store_encrypts_keys(tmp_path):
     from PySide6.QtCore import QSettings
 
     QSettings.setPath(QSettings.Format.IniFormat, QSettings.Scope.UserScope, str(tmp_path))
-    from aethervexa.ui.settings_store import SettingsStore
+    from AIMarkLens.ui.settings_store import SettingsStore
 
     store = SettingsStore()
     settings = store.load()

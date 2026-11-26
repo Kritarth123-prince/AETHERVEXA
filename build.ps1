@@ -1,8 +1,8 @@
-# Builds AETHERVEXA release files into .dist\<Edition>\ :
+# Builds AIMarkLens release files into .dist\<Edition>\ :
 #
-#   AETHERVEXA-<version>-<Edition>-Setup.exe      standard installer with uninstaller (needs Inno Setup 6)
-#   AETHERVEXA-<version>-<Edition>-Portable.exe   single self-contained file that runs from any folder
-#   AETHERVEXA\                                   the application folder the installer packages
+#   AIMarkLens-<version>-<Edition>-Setup.exe      standard installer with uninstaller (needs Inno Setup 6)
+#   AIMarkLens-<version>-<Edition>-Portable.exe   single self-contained file that runs from any folder
+#   AIMarkLens\                                   the application folder the installer packages
 #
 # and .dist\SHA256SUMS.txt for every release file.
 #
@@ -28,7 +28,7 @@ if (-not (Test-Path $python)) {
 & $python -m pip install --disable-pip-version-check -q -r requirements-dev.txt
 if ($LASTEXITCODE -ne 0) { throw "Installing dependencies failed." }
 
-$version = (Select-String -Path "aethervexa\__init__.py" -Pattern '^APP_VERSION = "(.+)"').Matches[0].Groups[1].Value
+$version = (Select-String -Path "AIMarkLens\__init__.py" -Pattern '^APP_VERSION = "(.+)"').Matches[0].Groups[1].Value
 $editions = if ($Edition -eq "All") { @("Public", "Personal") } else { @($Edition) }
 
 $iscc = $null
@@ -60,54 +60,54 @@ function Test-Build([string]$exe) {
     if ($check.ExitCode -ne 0) { throw "$exe failed its self-test (exit code $($check.ExitCode))." }
 }
 
-$buildInfo = "aethervexa\_build_info.py"
+$buildInfo = "AIMarkLens\_build_info.py"
 try {
     foreach ($ed in $editions) {
         $lower = $ed.ToLower()
         $out = Join-Path $PSScriptRoot ".dist\$ed"
         if (Test-Path $out) {
             try { Remove-Item -Recurse -Force $out }
-            catch { throw "Could not clear $out. Close AETHERVEXA if it is running from there, then build again." }
+            catch { throw "Could not clear $out. Close AIMarkLens if it is running from there, then build again." }
         }
         New-Item -ItemType Directory -Force $out | Out-Null
         Set-Content -Path $buildInfo -Encoding ASCII -Value @(
             '"""Written by build.ps1; records which edition this build is."""',
             "EDITION = `"$lower`"",
             "BUILD_DATE = `"$(Get-Date -Format 'yyyy-MM-dd HH:mm')`"")
-        $env:AETHERVEXA_EDITION = $lower
+        $env:AIMarkLens_EDITION = $lower
 
         Write-Host "[$ed] Building the application folder..."
-        Remove-Item Env:AETHERVEXA_PORTABLE -ErrorAction SilentlyContinue
-        & $python -m PyInstaller --noconfirm --clean --log-level WARN --distpath $out --workpath "build\$lower\folder" AETHERVEXA.spec
+        Remove-Item Env:AIMarkLens_PORTABLE -ErrorAction SilentlyContinue
+        & $python -m PyInstaller --noconfirm --clean --log-level WARN --distpath $out --workpath "build\$lower\folder" AIMarkLens.spec
         if ($LASTEXITCODE -ne 0) { throw "PyInstaller failed ($ed folder build)." }
-        Test-Build "$out\AETHERVEXA\AETHERVEXA.exe"
+        Test-Build "$out\AIMarkLens\AIMarkLens.exe"
 
         if (-not $NoPortable) {
             Write-Host "[$ed] Building the portable file..."
-            $env:AETHERVEXA_PORTABLE = "1"
-            & $python -m PyInstaller --noconfirm --log-level WARN --distpath $out --workpath "build\$lower\portable" AETHERVEXA.spec
+            $env:AIMarkLens_PORTABLE = "1"
+            & $python -m PyInstaller --noconfirm --log-level WARN --distpath $out --workpath "build\$lower\portable" AIMarkLens.spec
             $code = $LASTEXITCODE
-            Remove-Item Env:AETHERVEXA_PORTABLE -ErrorAction SilentlyContinue
+            Remove-Item Env:AIMarkLens_PORTABLE -ErrorAction SilentlyContinue
             if ($code -ne 0) { throw "PyInstaller failed ($ed portable build)." }
-            $built = if ($ed -eq "Public") { "AETHERVEXA-Portable.exe" } else { "AETHERVEXA-Personal-Portable.exe" }
-            $portable = "$out\AETHERVEXA-$version-$ed-Portable.exe"
+            $built = if ($ed -eq "Public") { "AIMarkLens-Portable.exe" } else { "AIMarkLens-Personal-Portable.exe" }
+            $portable = "$out\AIMarkLens-$version-$ed-Portable.exe"
             Move-Item -Force "$out\$built" $portable
             Test-Build $portable
         }
 
         if (-not $NoInstaller) {
             Write-Host "[$ed] Compiling the installer..."
-            & $iscc /Q "/DEdition=$ed" "/DAppVersion=$version" "/DSourceDir=$out\AETHERVEXA" "/DOutputDir=$out" installer\AETHERVEXA.iss
+            & $iscc /Q "/DEdition=$ed" "/DAppVersion=$version" "/DSourceDir=$out\AIMarkLens" "/DOutputDir=$out" installer\AIMarkLens.iss
             if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed ($ed installer)." }
         }
     }
 }
 finally {
     Remove-Item $buildInfo -ErrorAction SilentlyContinue
-    Remove-Item Env:AETHERVEXA_EDITION, Env:AETHERVEXA_PORTABLE -ErrorAction SilentlyContinue
+    Remove-Item Env:AIMarkLens_EDITION, Env:AIMarkLens_PORTABLE -ErrorAction SilentlyContinue
 }
 
-$releases = Get-ChildItem .dist -Recurse -File -Include "AETHERVEXA-*-Setup.exe", "AETHERVEXA-*-Portable.exe"
+$releases = Get-ChildItem .dist -Recurse -File -Include "AIMarkLens-*-Setup.exe", "AIMarkLens-*-Portable.exe"
 $sums = $releases | ForEach-Object { "{0}  {1}" -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(), $_.Name }
 Set-Content -Path ".dist\SHA256SUMS.txt" -Encoding ASCII -Value $sums
 
