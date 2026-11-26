@@ -368,7 +368,7 @@ installs it for your user only. It also finds tools in a `tools` folder next to 
 ### Set up and run
 
 ```powershell
-git clone https://github.com/Kritarth123-prince/AETHERVEXA
+git clone https://github.com/kritarthranjan/AETHERVEXA
 cd AETHERVEXA
 py -3.12 -m venv .venv
 .venv\Scripts\python.exe -m pip install --upgrade pip
