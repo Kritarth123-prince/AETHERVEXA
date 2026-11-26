@@ -371,8 +371,8 @@ installs it for your user only. It also finds tools in a `tools` folder next to 
 ### Set up and run
 
 ```powershell
-git clone https://github.com/kritarthranjan/AIMarkLens
-cd AIMarkLens
+git clone https://github.com/kritarthranjan/AETHERVEXA
+cd AETHERVEXA
 py -3.12 -m venv .venv
 .venv\Scripts\python.exe -m pip install --upgrade pip
 .venv\Scripts\python.exe -m pip install -r requirements-dev.txt
