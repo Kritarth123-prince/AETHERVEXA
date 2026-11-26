@@ -1,9 +1,9 @@
 # Third-party notices
 
-AETHERVEXA's release builds bundle the following open-source components. Each remains under its own licence;
+AIMarkLens's release builds bundle the following open-source components. Each remains under its own licence;
 the full licence texts are available from the linked projects and are included in each package's distribution.
 
-| Component | Use in AETHERVEXA | Licence |
+| Component | Use in AIMarkLens | Licence |
 |---|---|---|
 | [Qt 6](https://www.qt.io/) and [PySide6](https://doc.qt.io/qtforpython-6/) | User interface | LGPL-3.0 (dynamically linked; you may replace the Qt libraries in the application folder) |
 | [Python](https://www.python.org/) | Runtime | Python Software Foundation License |
@@ -17,7 +17,7 @@ the full licence texts are available from the linked projects and are included i
 
 ## Tools downloaded at the user's request
 
-These are **not** included in the release files. AETHERVEXA downloads them from their official sources, after verifying
+These are **not** included in the release files. AIMarkLens downloads them from their official sources, after verifying
 the published SHA-256 checksums, only when the user presses **Install** in Settings.
 
 | Tool | Source | Licence |

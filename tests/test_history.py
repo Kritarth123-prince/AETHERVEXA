@@ -5,11 +5,11 @@ import io
 import pytest
 
 from conftest import natural_rgb
-from aethervexa.core import history
-from aethervexa.core.context import TaskContext
-from aethervexa.engines.image.analyser import ImageOptions, analyse_image
-from aethervexa.engines.image.export import DEFAULT_REMOVE, export_without_metadata
-from aethervexa.engines.image.pixels import perceptual_hash
+from AIMarkLens.core import history
+from AIMarkLens.core.context import TaskContext
+from AIMarkLens.engines.image.analyser import ImageOptions, analyse_image
+from AIMarkLens.engines.image.export import DEFAULT_REMOVE, export_without_metadata
+from AIMarkLens.engines.image.pixels import perceptual_hash
 
 
 def _findings(doc):

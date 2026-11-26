@@ -5,12 +5,12 @@ import pytest
 
 from c2pa_builder import jpeg_with_manifest, png_with_manifest
 from conftest import natural_rgb, read
-from aethervexa.core.context import TaskContext
-from aethervexa.core.errors import LabError
-from aethervexa.engines.image.analyser import ImageOptions, analyse_image
-from aethervexa.formats.c2pa import read_manifest_store
-from aethervexa.formats.containers import parse_container
-from aethervexa.formats.metadata import parse_xmp, read_exif
+from AIMarkLens.core.context import TaskContext
+from AIMarkLens.core.errors import LabError
+from AIMarkLens.engines.image.analyser import ImageOptions, analyse_image
+from AIMarkLens.formats.c2pa import read_manifest_store
+from AIMarkLens.formats.containers import parse_container
+from AIMarkLens.formats.metadata import parse_xmp, read_exif
 
 
 def _titles(doc):
@@ -136,7 +136,7 @@ def test_stealth_lsb_metadata_detected():
     import numpy as np
     from PIL import Image
 
-    from aethervexa.engines.image.forensics import detect_stealth_metadata
+    from AIMarkLens.engines.image.forensics import detect_stealth_metadata
 
     rgba = np.dstack([natural_rgb(64, 64), np.full((64, 64), 255, np.uint8)])
     payload = gzip.compress(b'{"prompt": "a red fox", "software": "NovelAI"}')
@@ -151,7 +151,7 @@ def test_stealth_lsb_metadata_detected():
 
 
 def test_cancellation_stops_analysis(jpeg_with_metadata):
-    from aethervexa.core.context import CancelToken, Cancelled
+    from AIMarkLens.core.context import CancelToken, Cancelled
 
     token = CancelToken()
     token.cancel()

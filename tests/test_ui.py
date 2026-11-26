@@ -15,10 +15,10 @@ def window(tmp_path_factory):
     # Keep test runs out of the user's real settings file.
     QSettings.setPath(QSettings.Format.IniFormat, QSettings.Scope.UserScope, str(tmp_path_factory.mktemp("settings")))
     app = QApplication.instance() or QApplication([])
-    from aethervexa.ui.theme import apply_theme
+    from AIMarkLens.ui.theme import apply_theme
 
     apply_theme(app)
-    from aethervexa.ui.main_window import MainWindow
+    from AIMarkLens.ui.main_window import MainWindow
 
     win = MainWindow()
     win.settings.auto_analyse = False
@@ -76,7 +76,7 @@ def test_cancel_and_failure_are_visible(window, jpeg_with_metadata, tmp_path):
 
 
 def test_text_page_analyses_pasted_sample(window):
-    from aethervexa.engines.text.sample import TextSample
+    from AIMarkLens.engines.text.sample import TextSample
 
     page = window.pages[1]
     window.switch_to(1)

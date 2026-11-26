@@ -1,4 +1,4 @@
-# Exact versions AETHERVEXA 1.0.0 was built and tested with: pip install -r requirements-lock.txt
+# Exact versions AIMarkLens 1.1.0 was built and tested with: pip install -r requirements-lock.txt
 altgraph==0.17.5
 certifi==2026.11.20
 cffi==2.1.1

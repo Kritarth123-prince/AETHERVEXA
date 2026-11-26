@@ -6,13 +6,13 @@ import pytest
 
 from c2pa_builder import png_with_manifest
 from conftest import read
-from aethervexa.core.context import TaskContext
-from aethervexa.core.errors import LabError
-from aethervexa.core.integrity import atomic_write_bytes, guard_output_path, read_original, verify_unchanged
-from aethervexa.core.report import Cell, Findings, Finding, KeyValues, ReportDocument, Section, Table, Verdict, render
-from aethervexa.engines.image import labmark
-from aethervexa.engines.image.export import DEFAULT_REMOVE, export_without_metadata
-from aethervexa.formats.containers import parse_container
+from AIMarkLens.core.context import TaskContext
+from AIMarkLens.core.errors import LabError
+from AIMarkLens.core.integrity import atomic_write_bytes, guard_output_path, read_original, verify_unchanged
+from AIMarkLens.core.report import Cell, Findings, Finding, KeyValues, ReportDocument, Section, Table, Verdict, render
+from AIMarkLens.engines.image import labmark
+from AIMarkLens.engines.image.export import DEFAULT_REMOVE, export_without_metadata
+from AIMarkLens.formats.containers import parse_container
 
 
 @pytest.mark.parametrize("fixture", ["jpeg_with_metadata", "png_with_parameters", "webp_with_exif"])
@@ -71,7 +71,7 @@ def test_lab_watermark_round_trip(rgb):
 
 
 def test_image_experiment_runs(png_with_parameters):
-    from aethervexa.engines.image.experiments import run_image_experiment
+    from AIMarkLens.engines.image.experiments import run_image_experiment
 
     doc = run_image_experiment(png_with_parameters, ["png", "jpeg75", "crop90"], "k", TaskContext())
     table = doc.sections[0].blocks[-1]
@@ -83,8 +83,8 @@ def test_image_experiment_runs(png_with_parameters):
 def test_compare_reports_lost_signals(jpeg_with_metadata, tmp_path):
     from PIL import Image
 
-    from aethervexa.engines.image.analyser import ImageOptions
-    from aethervexa.engines.image.compare import compare_images
+    from AIMarkLens.engines.image.analyser import ImageOptions
+    from AIMarkLens.engines.image.compare import compare_images
 
     stripped = tmp_path / "resaved.png"
     Image.open(jpeg_with_metadata).save(stripped)

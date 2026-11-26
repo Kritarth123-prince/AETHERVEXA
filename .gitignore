@@ -11,7 +11,7 @@ build/
 dist/
 .dist/
 *.spec.bak
-aethervexa/_build_info.py
+AIMarkLens/_build_info.py
 
 # Editors and OS
 .vscode/
